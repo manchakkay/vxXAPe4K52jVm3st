@@ -1,0 +1,124 @@
+@media screen and (min-width: 480px) and (max-width: 639px) {
+    // header.scss
+    header {
+        &.collapsed {
+            height: 60px;
+        }
+
+        &.expanded {
+            height: 120px;
+        }
+
+        .header-container {
+            width: 460px;
+        }
+
+        .navigation {
+            .navigation-menu {
+                display: none;
+            }
+        }
+
+        .title {
+            .logo-fbki {
+                .logo-fbki-text {
+                    display: none;
+                }
+            }
+        }
+        .quick-access {
+            .contacts {
+                display: none;
+            }
+            .buttons {
+                .button-icon {
+                    &.quick-btn-call {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+    // blocks.sccs
+    section#onboarding {
+        min-height: 640px;
+        max-height: 760px;
+
+        .landing {
+            flex-direction: column;
+            align-items: center;
+            width: 460px;
+
+            min-width: 460px;
+
+            margin-top: 140px;
+
+            .lead {
+                .lead-text {
+                    h2 {
+                        margin-top: 16px;
+                    }
+                }
+                .lead-buttons {
+                    margin-top: 32px;
+                }
+            }
+
+            .news-important {
+                height: auto;
+                margin-top: 60px;
+
+                .swiper {
+                    width: 460px;
+                    max-height: 284px;
+                }
+
+                .news-instance {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    .news-cover {
+                        width: 200px;
+                        height: 140px;
+
+                        margin-right: 24px;
+                        border-radius: 8px;
+                    }
+
+                    .news-text {
+                        width: 236px;
+                        margin-top: 0px;
+
+                        .news-description {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    section#news {
+        .news-wrapper {
+            width: 460px;
+            min-width: 460px;
+
+            margin-top: 60px;
+
+            .news-grid {
+                margin-top: 32px;
+                gap: 20px;
+
+                .news-card {
+                    width: 220px;
+                    border-radius: 12px;
+
+                    .news-cover {
+                        width: 220px;
+                        height: 154px;
+                    }
+                }
+            }
+        }
+    }
+}

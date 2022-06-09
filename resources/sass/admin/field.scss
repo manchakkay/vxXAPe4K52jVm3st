@@ -1,0 +1,609 @@
+.fld-wrapper {
+    &:not(:last-child) {
+        margin-bottom: 16px;
+    }
+
+    &[data-hidden="true"] {
+        display: none;
+    }
+
+    .field {
+        display: flex;
+        box-sizing: border-box;
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding: 12px 16px 16px;
+
+        border: 1px solid palette("anti-flash-white", "background", "-100");
+        border-radius: 10px;
+
+        &.file {
+            padding: 12px 0px 0px;
+            overflow: auto;
+
+            .fld-topline {
+                box-sizing: border-box;
+                padding-right: 16px;
+                padding-left: 16px;
+            }
+        }
+
+        &.select {
+            .fld-select {
+                width: calc(100% + 8px);
+                padding: 0px 4px;
+
+                transform: translateX(-8px);
+
+                border: 0px solid transparent;
+                outline: none;
+                background-color: palette("@constant", "grayscale", "100%");
+
+                color: palette("anti-flash-white", "eerie-black", "~000");
+
+                font-family: "Golos Text";
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 500;
+                white-space: pre-wrap;
+                cursor: pointer;
+
+                .fld-select-option {
+                    padding: 0px 4px;
+                }
+            }
+        }
+
+        &.draggable-image {
+            .fld-draggable-list {
+                display: grid;
+                position: relative;
+
+                grid-template-columns: auto auto auto;
+                width: 100%;
+                gap: 16px;
+
+                .fld-draggable-item {
+                    display: block;
+                    position: relative;
+
+                    flex-basis: 40%;
+                    flex-grow: 1;
+
+                    cursor: grab;
+
+                    &.empty {
+                        .fld-draggable-item-delete,
+                        .fld-draggable-item-index,
+                        .fld-draggable-image-preview {
+                            display: none !important;
+                        }
+                    }
+                    &:not(.empty) {
+                        .fld-draggable-image-upload {
+                            display: none !important;
+                        }
+                    }
+
+                    .fld-draggable-image-wrapper {
+                        width: 100%;
+                        padding-top: 70%;
+
+                        &:hover {
+                            .fld-draggable-item-delete,
+                            .fld-draggable-item-index {
+                                opacity: 1;
+                            }
+                        }
+
+                        .fld-draggable-image-preview {
+                            display: inline-block;
+                            position: absolute;
+
+                            top: 0px;
+                            box-sizing: border-box;
+                            width: 100%;
+                            height: 100%;
+
+                            border-radius: 8px;
+
+                            object-fit: cover;
+                        }
+
+                        .fld-draggable-image-upload {
+                            display: flex;
+                            position: absolute;
+                            top: 0px;
+                            box-sizing: border-box;
+
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+
+                            width: 100%;
+                            height: 100%;
+                            padding: 16px;
+                            transition: border 0.15s ease;
+
+                            border: 1px solid
+                                palette(
+                                    "anti-flash-white",
+                                    "background",
+                                    "-100"
+                                );
+
+                            border-radius: 8px;
+                            background: palette(
+                                "anti-flash-white",
+                                "background",
+                                "~000"
+                            );
+                            cursor: pointer;
+
+                            &:hover {
+                                border: 1px solid
+                                    palette(
+                                        "anti-flash-white",
+                                        "background",
+                                        "-200"
+                                    );
+
+                                span {
+                                    color: palette(
+                                        "anti-flash-white",
+                                        "eerie-black",
+                                        "~000"
+                                    );
+                                }
+                            }
+
+                            span {
+                                margin-top: 8px;
+
+                                transition: color 0.15s ease;
+                                color: palette(
+                                    "anti-flash-white",
+                                    "eerie-black",
+                                    "+300"
+                                );
+                                font-family: "Golos Text";
+                                font-size: 14px;
+                                font-style: normal;
+                                font-weight: 500;
+                                line-height: 18px;
+                                text-align: center;
+                            }
+
+                            input {
+                                display: none;
+                            }
+                        }
+
+                        .fld-draggable-item-delete {
+                            display: flex;
+                            position: absolute;
+
+                            right: 12px;
+                            bottom: 12px;
+                            box-sizing: border-box;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 4px;
+                            transition: background-color 0.15s ease,
+                                opacity 0.15s ease;
+
+                            border-radius: 6px;
+                            opacity: 0;
+
+                            background-color: palette(
+                                "anti-flash-white",
+                                "background",
+                                "~000"
+                            );
+
+                            cursor: pointer;
+
+                            &:hover {
+                                background-color: palette(
+                                    "anti-flash-white",
+                                    "carmine-pink",
+                                    "+200"
+                                );
+                                svg path {
+                                    fill: palette(
+                                        "anti-flash-white",
+                                        "carmine-pink",
+                                        "~000"
+                                    );
+                                }
+                            }
+
+                            svg {
+                                display: block;
+
+                                path {
+                                    transition: fill 0.15s ease;
+                                    fill: palette(
+                                        "anti-flash-white",
+                                        "eerie-black",
+                                        "+300"
+                                    );
+                                }
+                            }
+                        }
+
+                        .fld-draggable-item-index {
+                            display: flex;
+                            position: absolute;
+
+                            bottom: 12px;
+                            left: 12px;
+                            box-sizing: border-box;
+                            align-items: center;
+                            justify-content: center;
+                            min-width: 32px;
+
+                            height: 32px;
+                            padding: 4px;
+
+                            transition: opacity 0.15s ease;
+
+                            border-radius: 6px;
+                            opacity: 0;
+
+                            background-color: palette(
+                                "anti-flash-white",
+                                "background",
+                                "~000"
+                            );
+                            color: palette(
+                                "anti-flash-white",
+                                "eerie-black",
+                                "+300"
+                            );
+
+                            font-family: "Golos Text";
+                            font-size: 14px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: 16px;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+
+        .fld-topline {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+
+            width: 100%;
+
+            margin-bottom: 12px;
+
+            span {
+                color: palette("anti-flash-white", "eerie-black", "+300");
+                font-family: "Golos Text";
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 16px;
+
+                &.fld-required {
+                    color: palette("anti-flash-white", "carmine-pink", "~000");
+                }
+            }
+
+            .fld-topline-right {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: flex-end;
+
+                .fld-tooltip {
+                    display: flex;
+                    position: relative;
+
+                    z-index: 11000;
+                    flex-direction: row;
+                    align-items: flex-start;
+
+                    margin-right: 12px;
+                    padding: 0px 6px;
+                    border-radius: 4px;
+
+                    background-color: palette(
+                        "anti-flash-white",
+                        "carmine-pink",
+                        "~000"
+                    );
+                    cursor: pointer;
+
+                    &:not(.active) {
+                        display: none;
+                    }
+
+                    &:hover {
+                        background-color: palette(
+                            "eerie-black",
+                            "background",
+                            "+200"
+                        );
+
+                        .fld-tooltip-box {
+                            display: block;
+                        }
+                    }
+
+                    span {
+                        color: palette(
+                            "eerie-black",
+                            "anti-flash-white",
+                            "~000"
+                        );
+
+                        font-family: "Golos Text";
+                        font-size: 9px;
+                        font-style: normal;
+                        font-weight: 600;
+                        letter-spacing: 0.05em;
+                        line-height: 16px;
+                        text-transform: uppercase;
+                    }
+
+                    .fld-tooltip-box {
+                        display: none;
+                        position: absolute;
+                        top: 150%;
+                        left: 50%;
+                        box-sizing: border-box;
+
+                        width: 200px;
+                        margin-left: -100px;
+
+                        padding: 8px;
+
+                        border-radius: 8px;
+
+                        background-color: palette(
+                            "eerie-black",
+                            "background",
+                            "+200"
+                        );
+
+                        color: palette(
+                            "eerie-black",
+                            "anti-flash-white",
+                            "~000"
+                        );
+
+                        font-family: "Golos Text";
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 16px;
+                    }
+                }
+            }
+        }
+
+        .fld-file-content {
+            position: relative;
+            width: 100%;
+
+            &.image {
+                padding-top: 70%;
+            }
+
+            &.any {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                min-height: 160px;
+                background-color: palette("@constant", "grayscale", "100%");
+            }
+
+            .fld-file-preview {
+                position: absolute;
+
+                top: 0px;
+                width: 100%;
+                height: 100%;
+
+                background-color: palette("@constant", "grayscale", "100%");
+
+                object-position: center center;
+                object-fit: cover;
+
+                &[src=" "] {
+                    display: none;
+                }
+            }
+
+            .fld-file-name {
+                display: block;
+                width: fit-content;
+                margin: 12px auto 72px auto;
+                padding: 0px 16px;
+
+                color: palette("anti-flash-white", "eerie-black", "~000");
+
+                font-family: "Golos Text";
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 500;
+                text-align: center;
+            }
+
+            .fld-actions {
+                display: flex;
+                position: absolute;
+                bottom: 0px;
+
+                left: 0px;
+                box-sizing: border-box;
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: flex-end;
+                width: 100%;
+
+                padding: 0px 16px 16px;
+
+                &.alone {
+                    justify-content: center;
+                }
+
+                .fld-file-input {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: flex-start;
+
+                    padding: 8px 16px 8px 8px;
+                    border-radius: 8px;
+
+                    background-color: palette(
+                        "anti-flash-white",
+                        "background",
+                        "~000"
+                    );
+                    color: palette("anti-flash-white", "eerie-black", "+300");
+
+                    font-family: "Golos Text";
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 24px;
+
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: palette(
+                            "anti-flash-white",
+                            "background",
+                            "-100"
+                        );
+                        color: palette(
+                            "anti-flash-white",
+                            "eerie-black",
+                            "+200"
+                        );
+
+                        .icon path {
+                            fill: palette(
+                                "anti-flash-white",
+                                "eerie-black",
+                                "+200"
+                            );
+                        }
+                    }
+
+                    .icon {
+                        margin-right: 6px;
+                    }
+
+                    input[type="file"] {
+                        display: none;
+                    }
+                }
+
+                .fld-file-remove {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: flex-start;
+                    margin-left: 12px;
+
+                    padding: 8px;
+                    border-radius: 8px;
+
+                    background-color: palette(
+                        "anti-flash-white",
+                        "background",
+                        "~000"
+                    );
+                    color: palette("anti-flash-white", "eerie-black", "+300");
+
+                    font-family: "Golos Text";
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 24px;
+
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: palette(
+                            "anti-flash-white",
+                            "background",
+                            "-100"
+                        );
+                        color: palette(
+                            "anti-flash-white",
+                            "eerie-black",
+                            "+200"
+                        );
+
+                        .icon path {
+                            fill: palette(
+                                "anti-flash-white",
+                                "eerie-black",
+                                "+200"
+                            );
+                        }
+                    }
+                }
+            }
+        }
+
+        .fld-content {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            width: 100%;
+
+            * {
+                font-family: "Golos Text";
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 500;
+                white-space: pre-wrap;
+            }
+
+            .fld-area {
+                flex: none;
+                flex-grow: 1;
+                order: 1;
+                padding: 0px;
+                border: 0px solid transparent;
+                outline: none;
+
+                background-color: transparent;
+
+                resize: none;
+
+                &::-webkit-input-placeholder {
+                    color: palette("anti-flash-white", "eerie-black", "+300");
+                }
+                &:-moz-placeholder {
+                    color: palette("anti-flash-white", "eerie-black", "+300");
+                }
+                &::-moz-placeholder {
+                    color: palette("anti-flash-white", "eerie-black", "+300");
+                }
+                &:-ms-input-placeholder {
+                    color: palette("anti-flash-white", "eerie-black", "+300");
+                }
+                &::-ms-input-placeholder {
+                    color: palette("anti-flash-white", "eerie-black", "+300");
+                }
+                &::placeholder {
+                    color: palette("anti-flash-white", "eerie-black", "+300");
+                }
+            }
+        }
+    }
+}

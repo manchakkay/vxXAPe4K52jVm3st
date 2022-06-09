@@ -1,0 +1,98 @@
+.b {
+    &-big {
+        @media screen and (min-width: 1200px) {
+            padding: 12px 24px;
+            border-radius: 10px;
+        }
+        @media screen and (min-width: 960px) and (max-width: 1199px) {
+            padding: 12px 24px;
+            border-radius: 10px;
+        }
+        @media screen and (min-width: 640px) and (max-width: 959px) {
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+        @media screen and (min-width: 480px) and (max-width: 639px) {
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+        @media screen and (max-width: 479px) {
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+    }
+
+    &-med {
+        @media screen and (min-width: 1200px) {
+            padding: 10px 16px;
+            border-radius: 8px;
+        }
+        @media screen and (min-width: 960px) and (max-width: 1199px) {
+            padding: 10px 16px;
+            border-radius: 8px;
+        }
+        @media screen and (min-width: 640px) and (max-width: 959px) {
+            padding: 10px 16px;
+            border-radius: 8px;
+        }
+        @media screen and (min-width: 480px) and (max-width: 639px) {
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+        @media screen and (max-width: 479px) {
+            padding: 6px 10px;
+            border-radius: 4px;
+        }
+    }
+}
+
+.btn {
+    display: block;
+
+    box-sizing: border-box;
+    width: fit-content;
+    height: fit-content;
+    transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out,
+        border 0.1s ease-in-out;
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    &-tx {
+        &-main {
+            background-color: palette("eerie-black", "background", "~000");
+            color: palette("eerie-black", "anti-flash-white", "~000");
+
+            &:hover {
+                background-color: palette("eerie-black", "background", "+300");
+                color: palette("eerie-black", "anti-flash-white", "-200");
+            }
+        }
+
+        &-ghost {
+            border: 1px solid #00000022;
+            background-color: transparent;
+            color: palette("anti-flash-white", "eerie-black", "~000");
+
+            &:hover {
+                background-color: palette(
+                    "anti-flash-white",
+                    "background",
+                    "-100"
+                );
+                color: palette("anti-flash-white", "eerie-black", "+300");
+            }
+        }
+
+        &-ghost-white {
+            border: 1px solid #ffffff22;
+            background-color: transparent;
+            color: #fff;
+
+            &:hover {
+                background-color: #ffffff22;
+                color: #ffffffaa;
+            }
+        }
+    }
+}

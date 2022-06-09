@@ -1,0 +1,567 @@
+@import "./user/global.scss";
+@import "./palette";
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+tr,
+td,
+tbody,
+table,
+th,
+hr,
+li,
+ol,
+ul {
+    margin: unset;
+    padding: unset;
+}
+
+canvas.background {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: -1000;
+}
+.background-basic {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: -1000;
+    background: white;
+    opacity: 0;
+
+    transition: opacity 0.4s ease-out;
+
+    &.initial {
+        opacity: 1;
+    }
+}
+
+.blocks-structure {
+    width: 760px;
+    margin: 120px auto 80px auto;
+
+    .block {
+        &.block-TITLE01 {
+            padding-right: 32px;
+            padding-bottom: 20px;
+            padding-left: 32px;
+            .title {
+                color: palette("anti-flash-white", "eerie-black", "~000");
+                font-family: "KyivType_Sans_Low Contrast", "Styrene A LC",
+                    "Raleway", "SF Pro Display", sans-serif;
+                font-size: 44px;
+                font-style: normal;
+                font-weight: 700;
+                letter-spacing: -0.02em;
+                line-height: 52px;
+
+                font-feature-settings: "ss01" on;
+            }
+        }
+
+        &.block-TEXT01 {
+            padding-top: 20px;
+            padding-right: 32px;
+            padding-bottom: 20px;
+            padding-left: 32px;
+        }
+
+        &.block-QUOTE01 {
+            padding-top: 20px;
+            padding-right: 32px;
+            padding-bottom: 20px;
+            padding-left: 32px;
+
+            .quote-author {
+                display: flex;
+                flex-direction: row;
+                align-content: center;
+
+                font-family: "Golos Text", "Inter", "Manrope", "Segoe UI",
+                    "Arial", sans-serif;
+                font-size: 18px;
+                line-height: 155%;
+
+                .quote-author-photo {
+                    position: relative;
+                    box-sizing: border-box;
+                    flex-shrink: 0;
+                    width: 72px;
+                    height: 72px;
+                    overflow: hidden;
+                    border-radius: 36px;
+
+                    * {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                .quote-author-details {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    width: 100%;
+                    margin-left: 20px;
+
+                    & > * {
+                        line-height: 100%;
+                    }
+
+                    .quote-author-name {
+                        font-weight: 600;
+                    }
+
+                    .quote-author-position {
+                        margin-top: 8px;
+                        color: palette(
+                            "anti-flash-white",
+                            "eerie-black",
+                            "+300"
+                        );
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            .quote-body {
+                margin-top: 16px;
+            }
+        }
+
+        &.block-RULE01 {
+            margin: 40px 0px;
+
+            border: 0px;
+            border-top: 1px solid #e2e3e5;
+        }
+
+        &.block-IMAGE01 {
+            padding-top: 20px;
+            padding-right: 0px;
+            padding-bottom: 20px;
+            padding-left: 0px;
+
+            .image {
+                display: block;
+
+                box-sizing: border-box;
+                width: 760px;
+                height: auto;
+                border: 1px solid
+                    palette("anti-flash-white", "background", "-100");
+                border-radius: 16px;
+
+                img {
+                    width: 100%;
+                    border-radius: 16px;
+                }
+            }
+        }
+
+        &.block-PERSON01 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 32px;
+            padding-right: 128px;
+            padding-bottom: 48px;
+            padding-left: 128px;
+
+            .person-details {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 100%;
+                margin-top: 32px;
+
+                .person-name {
+                    font-family: "KyivType_Sans_Low Contrast", "Styrene A LC",
+                        "Raleway", "SF Pro Display", sans-serif;
+                    font-size: 36px;
+                    font-style: normal;
+                    font-weight: 700;
+
+                    letter-spacing: -0.02em;
+                    line-height: 47px;
+
+                    text-align: center;
+                    font-feature-settings: "ss01" on;
+                }
+            }
+
+            .person-photo-wrapper {
+                width: fit-content;
+                height: fit-content;
+                padding: 24px;
+                border-radius: 50%;
+                background-color: #FFFFFF22;
+
+                .person-photo {
+                    position: relative;
+                    box-sizing: border-box;
+                    flex-shrink: 0;
+                    width: 256px;
+                    height: 256px;
+                    overflow: hidden;
+                    border-radius: 50%;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+
+            .person-bio {
+                margin-top: 24px;
+
+                * {
+                    text-align: center;
+                }
+            }
+        }
+
+        .textarea {
+            font-family: "Golos Text", "Inter", "Manrope", "Segoe UI", "Arial",
+                sans-serif;
+            font-size: 18px;
+            line-height: 155%;
+
+            a {
+                display: unset;
+                transition: unset;
+
+                text-decoration-line: underline;
+                text-decoration-style: wavy;
+                text-decoration-color: palette(
+                    "anti-flash-white",
+                    "eerie-black",
+                    "+400"
+                );
+                text-decoration-skip-ink: none;
+                text-decoration-thickness: 1px;
+                text-underline-position: under;
+
+                &:hover {
+                    text-decoration-color: palette(
+                        "anti-flash-white",
+                        "eerie-black",
+                        "~000"
+                    );
+                }
+            }
+
+            * {
+                border-radius: 4px;
+            }
+
+            p {
+                &:not(:first-child) {
+                    margin-top: 8px;
+                }
+            }
+
+            h2 {
+                color: inherit;
+                font-family: "KyivType_Sans_Low Contrast", "Styrene A LC",
+                    "Raleway", "SF Pro Display", sans-serif;
+                font-size: 32px;
+                font-style: normal;
+                font-weight: 600;
+                letter-spacing: -0.02em;
+                line-height: 135%;
+                text-indent: 0px;
+                font-feature-settings: "ss01" on;
+
+                &:not(:first-child) {
+                    margin-top: 16px;
+                }
+            }
+
+            h3 {
+                color: inherit;
+                font-family: "Golos Text";
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 145%;
+                text-indent: 0px;
+
+                &:not(:first-child) {
+                    margin-top: 8px;
+                }
+            }
+
+            ul,
+            ol {
+                padding-left: 1.5rem;
+                list-style-type: none;
+                font-family: "Golos Text", "Inter", "Manrope", "Segoe UI",
+                    "Arial", sans-serif;
+                font-size: 18px;
+                line-height: 155%;
+
+                *::before {
+                    display: inline-block;
+                    width: 1.2em;
+
+                    margin-right: 0.3em;
+                    margin-left: -1.5em;
+                    text-align: right;
+                    white-space: nowrap;
+                }
+
+                li {
+                    margin-top: 8px;
+                    padding-left: 1.5rem;
+
+                    &.ql-indent-1 {
+                        padding-left: 4.5rem;
+                    }
+                    &.ql-indent-2 {
+                        padding-left: 7.5rem;
+                    }
+                    &.ql-indent-3 {
+                        padding-left: 10.5rem;
+                    }
+                    &.ql-indent-4 {
+                        padding-left: 13.5rem;
+                    }
+                    &.ql-indent-5 {
+                        padding-left: 16.5rem;
+                    }
+                    &.ql-indent-6 {
+                        padding-left: 19.5rem;
+                    }
+                    &.ql-indent-7 {
+                        padding-left: 22.5rem;
+                    }
+                    &.ql-indent-8 {
+                        padding-left: 25.5rem;
+                    }
+                    &.ql-indent-9 {
+                        padding-left: 28.5rem;
+                    }
+                }
+            }
+
+            ul {
+                li {
+                    &::before {
+                        content: "\2022";
+                    }
+                }
+            }
+
+            ol {
+                li {
+                    counter-reset: list-1 list-2 list-3 list-4 list-5 list-6
+                        list-7 list-8 list-9;
+                    counter-increment: list-0;
+
+                    &::before {
+                        content: counter(list-0, decimal) ". ";
+                    }
+
+                    &.ql-indent-1 {
+                        counter-reset: list-2 list-3 list-4 list-5 list-6 list-7
+                            list-8 list-9;
+                        counter-increment: list-1;
+
+                        &::before {
+                            content: counter(list-1, decimal) ". ";
+                        }
+                    }
+                    &.ql-indent-2 {
+                        counter-reset: list-3 list-4 list-5 list-6 list-7 list-8
+                            list-9;
+                        counter-increment: list-2;
+                        &::before {
+                            content: counter(list-2, decimal) ". ";
+                        }
+                    }
+                    &.ql-indent-3 {
+                        counter-reset: list-4 list-5 list-6 list-7 list-8 list-9;
+                        counter-increment: list-3;
+                        &::before {
+                            content: counter(list-3, decimal) ". ";
+                        }
+                    }
+                    &.ql-indent-4 {
+                        counter-reset: list-5 list-6 list-7 list-8 list-9;
+                        counter-increment: list-4;
+                        &::before {
+                            content: counter(list-4, decimal) ". ";
+                        }
+                    }
+                    &.ql-indent-5 {
+                        counter-reset: list-6 list-7 list-8 list-9;
+                        counter-increment: list-5;
+                        &::before {
+                            content: counter(list-5, decimal) ". ";
+                        }
+                    }
+                    &.ql-indent-6 {
+                        counter-reset: list-7 list-8 list-9;
+                        counter-increment: list-6;
+                        &::before {
+                            content: counter(list-6, decimal) ". ";
+                        }
+                    }
+                    &.ql-indent-7 {
+                        counter-reset: list-8 list-9;
+                        counter-increment: list-7;
+                        &::before {
+                            content: counter(list-7, decimal) ". ";
+                        }
+                    }
+                    &.ql-indent-8 {
+                        counter-reset: list-9;
+                        counter-increment: list-8;
+                        &::before {
+                            content: counter(list-8, decimal) ". ";
+                        }
+                    }
+                    &.ql-indent-9 {
+                        counter-reset: none;
+                        counter-increment: list-9;
+                        &::before {
+                            content: counter(list-9, decimal) ". ";
+                        }
+                    }
+
+                    &.ql-indent-1:before {
+                        content: counter(list-1, decimal) ". ";
+                    }
+
+                    &.ql-indent-2:before {
+                        content: counter(list-2, decimal) ". ";
+                    }
+
+                    &.ql-indent-3:before {
+                        content: counter(list-3, decimal) ". ";
+                    }
+
+                    &.ql-indent-4:before {
+                        content: counter(list-4, decimal) ". ";
+                    }
+
+                    &.ql-indent-5:before {
+                        content: counter(list-5, decimal) ". ";
+                    }
+
+                    &.ql-indent-6:before {
+                        content: counter(list-6, decimal) ". ";
+                    }
+
+                    &.ql-indent-7:before {
+                        content: counter(list-7, decimal) ". ";
+                    }
+
+                    &.ql-indent-8:before {
+                        content: counter(list-8, decimal) ". ";
+                    }
+                }
+            }
+        }
+    }
+
+    .head-block {
+        position: relative;
+        width: 760px;
+
+        .head-meta {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 20px;
+
+            & > *:not(:first-child) {
+                margin-left: 16px;
+            }
+
+            & > * {
+                font-family: "Golos Text";
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 100%;
+            }
+
+            .head-category {
+                display: inline-block;
+                padding: 8px 12px;
+
+                border-radius: 8px;
+                background: palette("anti-flash-white", "background", "~000");
+                color: palette("anti-flash-white", "eerie-black", "~000");
+            }
+
+            .head-date {
+                color: palette("anti-flash-white", "eerie-black", "+300");
+            }
+        }
+
+        .head-thumbnail {
+            width: 760px;
+            height: 532px;
+
+            margin-top: 24px;
+            margin-right: 0px;
+            margin-bottom: 32px;
+            margin-left: 0px;
+
+            border-radius: 16px;
+            object-fit: cover;
+        }
+
+        .head-title {
+            box-sizing: border-box;
+            width: 760px;
+            margin-top: 0px;
+            padding-bottom: 16px;
+            // padding-right: 32px;
+            // padding-left: 32px;
+
+            font-family: "KyivType_Sans_Low Contrast", "Styrene A LC", "Raleway",
+                "SF Pro Display", sans-serif;
+            font-size: 56px;
+            font-style: normal;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 110%;
+            resize: none;
+            font-feature-settings: "ss01" on;
+        }
+
+        .head-description {
+            box-sizing: border-box;
+            width: 760px;
+            margin-top: 0px;
+            margin-bottom: 16px;
+            // padding-right: 32px;
+            // padding-left: 32px;
+
+            color: palette("anti-flash-white", "eerie-black", "~000");
+
+            font-family: "Golos Text";
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 155%;
+        }
+    }
+}

@@ -1,0 +1,6 @@
+<svg width="181" height="145" viewBox="0 0 181 145" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect opacity="0.5" x="1.5" y="28.5" width="115" height="115" rx="14.5" stroke="#E2E3E5" stroke-width="3"/>
+<rect x="43" width="118" height="118" rx="16" fill="#EEF0F2"/>
+<rect id="block-anim" x="43" width="118" height="118" rx="16" fill="#EEF0F2"/>
+<path d="M137 93.6619V136.68C137 142.971 145.19 145.399 148.619 140.125L155.267 129.897C156.646 127.776 159.157 126.681 161.649 127.114L173.19 129.122C179.361 130.195 183.166 122.601 178.612 118.3L147.659 89.0672C143.629 85.2606 137 88.118 137 93.6619Z" fill="#717982"/>
+</svg>

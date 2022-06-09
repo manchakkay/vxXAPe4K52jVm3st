@@ -1,0 +1,77 @@
+@media screen and (min-width: 960px) and (max-width: 1199px) {
+    // header.scss
+    header {
+        &.collapsed {
+            height: 60px;
+        }
+
+        &.expanded {
+            height: 116px;
+        }
+
+        .header-container {
+            width: 940px;
+        }
+
+        .navigation {
+            .navigation-menu {
+                margin-left: 32px;
+
+                .nav-point {
+                    &:not(:first-child) {
+                        margin-left: 24px;
+                    }
+                }
+            }
+        }
+    }
+    // blocks.scss
+    section#onboarding {
+        .landing {
+            width: 940px;
+            min-width: 940px;
+
+            margin-top: 60px;
+
+            .lead {
+                .lead-buttons {
+                    margin-top: 40px;
+                }
+            }
+
+            .news-important {
+                .swiper {
+                    width: 400px;
+                }
+                .news-instance {
+                    .news-cover {
+                        width: 400px;
+                        height: 280px;
+                    }
+                }
+            }
+        }
+    }
+    section#news {
+        .news-wrapper {
+            width: 940px;
+            min-width: 940px;
+
+            margin-top: 72px;
+
+            .news-grid {
+                margin-top: 40px;
+                gap: 20px;
+
+                .news-card {
+                    width: 300px;
+
+                    .news-cover {
+                        width: 300px;
+                        height: 210px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,190 @@
+.popup {
+    display: block;
+    position: fixed;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    // flex-direction: row;
+    // justify-content: center;
+    // align-items: center;
+
+    overflow-y: overlay;
+
+    .pp-wrapper {
+        display: flex;
+        position: relative;
+
+        z-index: 10000;
+        box-sizing: border-box;
+        align-items: center;
+        min-height: 100vh;
+
+        padding: 64px 0px;
+
+        .pp-background {
+            display: block;
+
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            opacity: 0.5;
+
+            background-color: palette("eerie-black", "background", "~000");
+
+            cursor: pointer;
+        }
+    }
+
+    .pp-body {
+        position: relative;
+
+        z-index: 10001;
+
+        margin: 0 auto;
+        padding: 32px;
+        border-radius: 32px;
+
+        background-color: palette("@constant", "grayscale", "100%");
+        cursor: auto;
+
+        .pp-content {
+            margin-bottom: 24px;
+
+            .pp-topbar {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: space-between;
+
+                margin-bottom: 24px;
+
+                .pp-title {
+                    color: palette("anti-flash-white", "eerie-black", "~000");
+                    font-family: "KyivType_Sans_Low Contrast";
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: 700;
+                    letter-spacing: -0.02em;
+                    line-height: 24px;
+                    font-feature-settings: "ss01" on;
+                }
+            }
+
+            .pp-close {
+                cursor: pointer;
+
+                &:hover {
+                    path {
+                        fill: palette(
+                            "anti-flash-white",
+                            "eerie-black",
+                            "~000"
+                        );
+                    }
+                }
+
+                path {
+                    fill: palette("anti-flash-white", "eerie-black", "+400");
+                }
+            }
+        }
+    }
+
+    .pp-actions {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-end;
+        width: 100%;
+
+        .pp-action {
+            display: flex;
+            position: relative;
+            flex-direction: row;
+            align-items: flex-start;
+            margin-left: 12px;
+
+            padding: 12px 20px;
+
+            border-radius: 10px;
+
+            font-family: "Golos Text";
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+
+            cursor: pointer;
+
+            &.pp-act-def:not(.disabled) {
+                background-color: palette(
+                    "anti-flash-white",
+                    "background",
+                    "~000"
+                );
+                color: palette("anti-flash-white", "eerie-black", "+300");
+
+                &:hover {
+                    background-color: palette(
+                        "anti-flash-white",
+                        "background",
+                        "-100"
+                    );
+                    color: palette("anti-flash-white", "eerie-black", "~000");
+                }
+            }
+
+            &.pp-act-act:not(.disabled) {
+                background-color: palette("eerie-black", "background", "~000");
+                color: palette("eerie-black", "anti-flash-white", "~000");
+
+                &:hover {
+                    background-color: palette(
+                        "eerie-black",
+                        "background",
+                        "+200"
+                    );
+                    color: palette("eerie-black", "anti-flash-white", "-200");
+                }
+            }
+
+            &.disabled {
+                background-color: palette("eerie-black", "background", "+400");
+                color: palette("eerie-black", "background", "+400");
+
+                &:hover {
+                    background-color: palette(
+                        "eerie-black",
+                        "background",
+                        "+300"
+                    );
+                    color: palette("eerie-black", "background", "+300");
+                }
+
+                .icon.loading {
+                    display: block;
+                }
+            }
+
+            .icon.loading {
+                display: none;
+                position: absolute;
+
+                top: 50%;
+                left: 50%;
+
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}

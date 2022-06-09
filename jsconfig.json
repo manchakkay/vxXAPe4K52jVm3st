@@ -1,0 +1,18 @@
+{
+    "include": [
+      "./resources/js/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "public"
+    ],
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "components/*": [
+                "./resources/js/components/*",
+                "./resources/js/redact/*"
+            ]
+        }
+    }
+  }

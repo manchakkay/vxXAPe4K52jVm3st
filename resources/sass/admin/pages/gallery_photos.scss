@@ -1,0 +1,233 @@
+@import "./../../palette";
+
+.photos-wrapper {
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: 36px;
+
+    .photos-block {
+        display: block;
+        position: relative;
+        flex-basis: 240px;
+        flex-grow: 1;
+        flex-shrink: 1;
+
+        .card-content {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            align-items: center;
+
+            .title {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+
+                width: 100%;
+                margin-top: 16px;
+
+                color: palette("anti-flash-white", "eerie-black", "~000");
+                font-size: 24px;
+                font-weight: 600;
+
+                .desc {
+                    width: 100%;
+
+                    margin-top: 6px;
+
+                    color: palette("anti-flash-white", "eerie-black", "~000");
+                    font-size: 18px;
+                    font-weight: 500;
+                }
+
+                .meta-info {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    margin-top: 16px;
+
+                    color: palette("anti-flash-white", "eerie-black", "+300");
+                    font-family: "Golos_UI";
+
+                    font-size: 14px;
+                    font-weight: 400;
+
+                    & > *:not(:first-child) {
+                        margin-left: 8px;
+                    }
+
+                    .divider {
+                        color: palette(
+                            "anti-flash-white",
+                            "eerie-black",
+                            "+300"
+                        );
+                    }
+
+                    .status {
+                        color: palette(
+                            "anti-flash-white",
+                            "eerie-black",
+                            "+300"
+                        );
+
+                        &.published {
+                            color: palette(
+                                "anti-flash-white",
+                                "pantone-green",
+                                "~000"
+                            );
+                        }
+
+                        &.deleted {
+                            color: palette(
+                                "anti-flash-white",
+                                "carmine-pink",
+                                "~000"
+                            );
+                        }
+                    }
+
+                    .slug {
+                        color: palette(
+                            "anti-flash-white",
+                            "eerie-black",
+                            "+300"
+                        );
+                    }
+                }
+            }
+
+            .image-container {
+                position: relative;
+                width: 100%;
+                padding-top: 70%;
+
+                overflow: hidden;
+
+                border-radius: 12px;
+
+                &:hover {
+                    .gallery-counter,
+                    .gallery-button {
+                        opacity: 1;
+                    }
+                }
+
+                .gallery-counter {
+                    display: flex;
+                    position: absolute;
+                    z-index: 1100;
+                    bottom: 12px;
+
+                    left: 50%;
+                    align-items: center;
+                    justify-content: center;
+
+                    width: fit-content;
+                    height: 32px;
+                    padding: 0px 8px;
+                    transform: translateX(-50%);
+
+                    transition: opacity 0.15s ease;
+                    border-radius: 8px;
+                    opacity: 0;
+                    background-color: palette(
+                        "anti-flash-white",
+                        "background",
+                        "~000"
+                    );
+                    color: palette("anti-flash-white", "eerie-black", "+300");
+
+                    font-family: "Golos_UI";
+                    font-size: 14px;
+                    font-weight: 400;
+                    pointer-events: none;
+                    user-select: none;
+                }
+
+                .gallery-button {
+                    display: block;
+                    position: absolute;
+                    z-index: 1100;
+                    bottom: 12px;
+
+                    width: 32px;
+                    height: 32px;
+                    transition: background-color 0.15s ease, opacity 0.15s ease;
+                    border-radius: 8px;
+                    opacity: 0;
+                    background-color: palette(
+                        "anti-flash-white",
+                        "background",
+                        "~000"
+                    );
+                    cursor: pointer;
+                    user-select: none;
+
+                    &:hover {
+                        background-color: palette(
+                            "anti-flash-white",
+                            "background",
+                            "-100"
+                        );
+                        svg path {
+                            fill: palette(
+                                "anti-flash-white",
+                                "eerie-black",
+                                "~000"
+                            );
+                        }
+                    }
+
+                    svg {
+                        display: block;
+                        width: 16px;
+                        height: 16px;
+                        margin: 8px;
+
+                        path {
+                            transition: fill 0.15s ease;
+                            fill: palette(
+                                "anti-flash-white",
+                                "eerie-black",
+                                "+400"
+                            );
+                        }
+                    }
+
+                    &.prev {
+                        left: 12px;
+                    }
+                    &.next {
+                        right: 12px;
+                    }
+                }
+
+                img {
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 12px;
+                }
+            }
+        }
+
+        .card-controls {
+            display: flex;
+
+            flex-shrink: 0;
+            align-items: center;
+            margin-left: 24px;
+
+            & > *:not(:first-child) {
+                margin-left: 12px;
+            }
+        }
+    }
+}

@@ -1,0 +1,343 @@
+.nestable-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  button {
+    svg {
+      margin-left: 8px;
+    }
+  }
+
+  span {
+    margin-left: 20px;
+
+    color: palette("anti-flash-white", "carmine-pink", "~000");
+    font-family: "Golos Text";
+
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+  }
+}
+
+.nestable-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  overflow: hidden;
+
+  border-radius: 16px;
+
+  * {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+.app-content {
+  min-height: 100%;
+}
+
+.list {
+  box-sizing: border-box;
+  flex: none;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 50%;
+  order: 1;
+  height: 640px;
+
+  padding: 24px;
+  overflow-x: hidden;
+  overflow-y: overlay;
+
+  background: palette("anti-flash-white", "background", "~000");
+
+  &::-webkit-scrollbar {
+    width: 14px !important;
+    border-radius: 60px;
+  }
+
+  &::-webkit-scrollbar::vertical {
+    width: 14px !important;
+    border-radius: 60px;
+  }
+
+  &::-webkit-scrollbar-track {
+    // box-shadow: inset 0 0 10px 10px green;
+    border: solid 6px transparent;
+    border-top: solid 14px transparent;
+    border-bottom: solid 14px transparent;
+    border-radius: 60px;
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: solid 6px transparent;
+    border-top: solid 14px transparent;
+    border-bottom: solid 14px transparent;
+    border-radius: 60px;
+    background: transparent;
+    box-shadow: inset 0 0 16px 16px
+      palette("anti-flash-white", "background", "-300");
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: transparent;
+    box-shadow: inset 0 0 16px 16px
+      palette("anti-flash-white", "background", "-200");
+  }
+
+  &:not(.cache) {
+    flex-grow: 2;
+    .nestable
+      > .nestable-list
+      > .nestable-item
+      > .nestable-item-content
+      > .nestable-handle {
+      font-weight: 600;
+    }
+  }
+
+  h2 {
+    margin-bottom: 16px;
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+
+.nestable {
+  position: relative;
+
+  & > .nestable-list {
+    display: block;
+    position: relative;
+    height: 100%;
+    margin: 0px;
+
+    & > .nestable-item {
+      display: block;
+
+      padding: 8px;
+
+      overflow: hidden;
+
+      border-radius: 8px;
+    }
+  }
+}
+
+.nestable-rtl {
+  direction: rtl;
+}
+
+li,
+ol {
+  list-style-type: none !important;
+}
+
+.nestable {
+  .nestable-list-empty {
+    height: 388px;
+    border: 2px dashed palette("anti-flash-white", "background", "-400");
+    border-radius: 4px;
+    color: transparent;
+  }
+
+  .nestable-item {
+    background-color: palette("@constant", "grayscale", "100%");
+
+    &.parent-col {
+      pointer-events: none;
+
+      .nestable-item-content {
+        pointer-events: auto;
+      }
+    }
+
+    .title,
+    .desc {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .desc {
+      margin-top: 8px;
+      color: palette("anti-flash-white", "eerie-black", "+300");
+      font-size: 14px;
+    }
+
+    button {
+      all: unset;
+      display: inline-block;
+      box-sizing: border-box;
+      width: 20px;
+      height: 20px;
+
+      margin-right: 8px;
+
+      border: 0px solid transparent;
+      border-radius: 4px;
+      background-color: palette("anti-flash-white", "background", "~000");
+      color: palette("anti-flash-white", "eerie-black", "+200");
+
+      font-size: 16px;
+      line-height: 20px;
+      text-align: center;
+
+      cursor: pointer;
+      flex-shrink: 0;
+      pointer-events: auto;
+
+      &:hover {
+        background-color: palette("anti-flash-white", "background", "-200");
+        color: palette("anti-flash-white", "eerie-black", "+300");
+      }
+    }
+
+    button.button-col {
+      background-color: palette("anti-flash-white", "background", "-400");
+      color: palette("anti-flash-white", "eerie-black", "~000");
+      pointer-events: auto;
+    }
+
+    .nestable-list {
+      height: fit-content;
+      padding: 0 0 0 30px;
+
+      overflow: hidden;
+      list-style-type: none;
+
+      transition: all 0.3s ease;
+
+      &.col {
+        height: 0px;
+        margin: 0;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+.nestable-rtl .nestable-list {
+  padding: 0 40px 0 0;
+}
+
+.nestable > .nestable-list {
+  padding: 0;
+}
+
+.nestable-item,
+.nestable-item-copy {
+  margin: 10px 0 0;
+}
+
+.nestable-item:first-child,
+.nestable-item-copy:first-child {
+  margin-top: 0;
+}
+
+.nestable-item .nestable-list,
+.nestable-item-copy .nestable-list {
+  margin-top: 8px;
+}
+
+.nestable-item {
+  display: block;
+  position: relative;
+}
+
+.nestable-item::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 11px;
+  left: -30px;
+  width: 22px;
+  height: 1px;
+
+  border-radius: 4px;
+  background-color: palette("anti-flash-white", "background", "-300");
+}
+
+.nestable-item::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -12px;
+  left: -30px;
+  width: 1px;
+  height: 320px;
+  border-radius: 4px;
+  background-color: palette("anti-flash-white", "background", "-300");
+}
+
+.nestable-item.is-dragging .nestable-list {
+  pointer-events: none;
+}
+
+.nestable-item.is-dragging * {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.nestable-item.is-dragging:before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  width: 4px;
+  height: 100%;
+  background-color: palette("anti-flash-white", "picton-blue", "~000");
+}
+
+.nestable-drag-layer {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.nestable-rtl .nestable-drag-layer {
+  right: 0;
+  left: auto;
+}
+
+.nestable-drag-layer > .nestable-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 4px;
+  border-radius: 4px;
+
+  background-color: palette("anti-flash-white", "picton-blue", "+200");
+
+  button {
+    display: none;
+  }
+}
+
+.nestable-rtl .nestable-drag-layer > .nestable-list {
+  padding: 0;
+}
+
+.nestable [draggable="true"] {
+  cursor: move;
+}
+
+.nestable-handle {
+  display: block;
+  width: 100%;
+
+  border-radius: 4px;
+
+  &:hover {
+    color: palette("anti-flash-white", "eerie-black", "+300");
+  }
+}

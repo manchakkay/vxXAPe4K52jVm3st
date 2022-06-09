@@ -1,0 +1,25 @@
+body {
+    header {
+        display: flex;
+    }
+
+    section#onboarding {
+        .landing .news-important {
+            .swiper {
+                opacity: 1;
+                pointer-events: auto;
+
+                .swiper-wrapper {
+                    display: flex;
+                    overflow: hidden;
+                }
+
+                .news-controls {
+                    .swiper-pagination {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

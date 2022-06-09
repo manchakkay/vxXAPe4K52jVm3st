@@ -1,0 +1,52 @@
+{
+    "private": true,
+    "scripts": {
+        "m-up": "php artisan up",
+        "m-down": "php artisan down --render=\"maintenance\" --secret=\"i-know-what-i-do\" --refresh=300",
+        "d": "npm run development",
+        "development": "mix",
+        "wp": "npm run watch-poll",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "p": "npm run production",
+        "production": "mix --production",
+        "su": "npm run soft-update",
+        "soft-update": "mix && mix watch -- --watch-options-poll=1000",
+        "u": "npm run update",
+        "update": "composer update && npm update && npm rebuild && php artisan optimize:clear && composer cc && composer dump-autoload && npm run development",
+        "hu": "npm run hard-update",
+        "hard-update": "php artisan migrate:rollback --step 100 && php artisan migrate:fresh && php artisan db:seed && php artisan telescope:clear && php artisan telescope:install && php artisan telescope:publish && php artisan telescope:resume && npm run update",
+        "pu": "npm run production-update",
+        "prod-update": "npm run update && npm run production"
+    },
+    "devDependencies": {
+        "@vue/compiler-sfc": "^3.2.33",
+        "axios": "^0.26.1",
+        "jquery": "^3.6.0",
+        "laravel-mix": "^6.0.43",
+        "lodash": "^4.17.21",
+        "popper.js": "^1.16",
+        "postcss": "^8.4",
+        "quill": "^1.3.7",
+        "resolve-url-loader": "^5.0",
+        "sass": "^1.50",
+        "sass-loader": "^12.6",
+        "vue": "^3.2",
+        "vue-loader": "^17.0"
+    },
+    "dependencies": {
+        "floating-vue": "^2.0.0-beta.16",
+        "glsl-canvas-js": "^0.2.9",
+        "js-string-formatter": "^1.0.1",
+        "npm": "^8.7.0",
+        "object-hash": "^3.0.0",
+        "quill-plain-text-paste": "^1.0.1",
+        "slugify": "^1.6.5",
+        "swiper": "^8.1.2",
+        "tippy.js": "^6.3.7",
+        "v-tooltip": "^4.0.0-beta.17",
+        "vue-axios": "^3.4.1",
+        "vue-draggable-next": "^2.1.1",
+        "vue-next-carousel": "^1.0.1",
+        "vue3-nestable": "^3.0.3"
+    }
+}

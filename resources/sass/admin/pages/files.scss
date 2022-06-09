@@ -1,0 +1,315 @@
+@import "./../../palette";
+
+.files-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+
+    .files-block {
+        display: flex;
+        position: relative;
+
+        box-sizing: border-box;
+        flex-direction: row;
+
+        justify-content: space-between;
+        width: 100%;
+
+        &:not(:first-child) {
+            margin-top: 28px;
+        }
+
+        .card-info {
+            display: flex;
+            position: relative;
+            flex-direction: row;
+            align-items: center;
+
+            .title {
+                flex-basis: 560px;
+                flex-grow: 1;
+                flex-shrink: 1;
+                color: palette("anti-flash-white", "eerie-black", "~000");
+                font-size: 18px;
+
+                font-weight: 500;
+
+                .meta-category {
+                    display: block;
+
+                    width: fit-content;
+                    margin-bottom: 8px;
+                    padding: 4px 8px;
+                    border-radius: 4px;
+                    background-color: palette(
+                        "anti-flash-white",
+                        "background",
+                        "~000"
+                    );
+                    color: palette("anti-flash-white", "eerie-black", "+300");
+                    font-family: "Golos";
+
+                    font-size: 14px;
+                    font-weight: 500;
+                }
+
+                .meta-info {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    margin-top: 8px;
+                    font-family: "Golos_UI";
+
+                    font-size: 14px;
+                    font-weight: 400;
+
+                    color: palette("anti-flash-white", "eerie-black", "+300");
+
+                    & > *:not(:first-child) {
+                        margin-left: 8px;
+                    }
+
+                    .divider {
+                        color: palette(
+                            "anti-flash-white",
+                            "eerie-black",
+                            "+300"
+                        );
+                    }
+
+                    .status {
+                        color: palette(
+                            "anti-flash-white",
+                            "eerie-black",
+                            "+300"
+                        );
+
+                        &.published {
+                            color: palette(
+                                "anti-flash-white",
+                                "pantone-green",
+                                "~000"
+                            );
+                        }
+
+                        &.deleted {
+                            color: palette(
+                                "anti-flash-white",
+                                "carmine-pink",
+                                "~000"
+                            );
+                        }
+                    }
+
+                    .slug {
+                        color: palette(
+                            "anti-flash-white",
+                            "eerie-black",
+                            "+300"
+                        );
+                    }
+
+                    .file-size {
+                        &.converted {
+                            color: palette(
+                                "anti-flash-white",
+                                "eerie-black",
+                                "+300"
+                            );
+                        }
+                    }
+
+                    .file-connection {
+                        &.none {
+                            color: palette(
+                                "anti-flash-white",
+                                "eerie-black",
+                                "+300"
+                            );
+                        }
+
+                        &.active {
+                            color: palette(
+                                "anti-flash-white",
+                                "eerie-black",
+                                "+300"
+                            );
+
+                            a {
+                                display: inline-block;
+
+                                color: palette(
+                                    "anti-flash-white",
+                                    "eerie-black",
+                                    "+300"
+                                );
+
+                                &:hover {
+                                    color: palette(
+                                        "anti-flash-white",
+                                        "eerie-black",
+                                        "+400"
+                                    );
+                                }
+                            }
+                        }
+                    }
+
+                    .file-type {
+                        box-sizing: border-box;
+                        overflow: hidden;
+
+                        border-radius: 4px;
+
+                        & > * {
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 2px 4px;
+
+                            &.type-extension {
+                                padding-right: 6px;
+                                border-top-left-radius: 4px;
+                                border-bottom-left-radius: 4px;
+                                background-color: palette(
+                                    "eerie-black",
+                                    "background",
+                                    "~000"
+                                );
+                                color: palette(
+                                    "eerie-black",
+                                    "anti-flash-white",
+                                    "~000"
+                                );
+
+                                font-weight: 500;
+                            }
+
+                            &.type-definition {
+                                padding-left: 6px;
+                                border-top-right-radius: 4px;
+                                border-bottom-right-radius: 4px;
+                                background-color: palette(
+                                    "anti-flash-white",
+                                    "background",
+                                    "-100"
+                                );
+
+                                color: palette(
+                                    "anti-flash-white",
+                                    "eerie-black",
+                                    "~000"
+                                );
+
+                                // Таблица
+                                &.type-spreadsheet {
+                                    background-color: palette(
+                                        "anti-flash-white",
+                                        "pantone-green",
+                                        "+200"
+                                    );
+                                }
+                                // Архив
+                                &.type-archive {
+                                    background-color: palette(
+                                        "anti-flash-white",
+                                        "background",
+                                        "-100"
+                                    );
+                                }
+                                // Изображение
+                                &.type-image {
+                                    background-color: palette(
+                                        "anti-flash-white",
+                                        "munsell",
+                                        "+200"
+                                    );
+                                }
+                                // Аудио
+                                &.type-audio {
+                                    background-color: palette(
+                                        "anti-flash-white",
+                                        "lavender",
+                                        "+200"
+                                    );
+                                }
+                                // Видео
+                                &.type-video {
+                                    background-color: palette(
+                                        "anti-flash-white",
+                                        "background",
+                                        "-100"
+                                    );
+                                }
+                                // Документ
+                                &.type-text-document {
+                                    background-color: palette(
+                                        "anti-flash-white",
+                                        "picton-blue",
+                                        "+200"
+                                    );
+                                }
+                                // Презентация
+                                &.type-presentation {
+                                    background-color: palette(
+                                        "anti-flash-white",
+                                        "carmine-pink",
+                                        "+200"
+                                    );
+                                }
+                                // Текстовый файл
+                                &.type-text {
+                                    background-color: palette(
+                                        "anti-flash-white",
+                                        "background",
+                                        "-100"
+                                    );
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .image-container {
+                position: relative;
+                box-sizing: border-box;
+                flex-shrink: 0;
+                width: 140px;
+                height: 98px;
+
+                overflow: hidden;
+
+                border-radius: 10px;
+
+                img {
+                    position: absolute;
+
+                    top: 0px;
+                    width: 100%;
+                    height: 100%;
+                    transform: translate3d(0, 0, 0);
+
+                    backface-visibility: hidden;
+
+                    object-fit: cover;
+                }
+            }
+        }
+
+        .card-controls {
+            display: flex;
+
+            flex-shrink: 0;
+            align-items: center;
+            margin-left: 24px;
+
+            & > *:not(:first-child) {
+                margin-left: 12px;
+            }
+        }
+    }
+}

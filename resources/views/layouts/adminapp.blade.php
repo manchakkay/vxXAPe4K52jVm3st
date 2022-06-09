@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru" spellcheck="false" {{-- lang="{{ str_replace('_', '-', app()->getLocale()) }}" --}}>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="white">
+
+    <title>
+        @if (!empty($title))
+            {{ $title }} | {{ config('app.title_suffix') }}
+        @endif
+
+    </title>
+
+
+    {{-- СКРИПТЫ --}}
+
+    {{-- Проверка на поддержку JS --}}
+    <script>
+        document.querySelector("html").classList.add("script");
+    </script>
+    {{-- Скрипты до подключения --}}
+    @stack('pre-scripts')
+
+
+    {{-- СТИЛИ --}}
+
+    {{-- Стили из шаблона --}}
+    @stack('styles')
+
+    {{-- Стиль иконки по запросу страницы или стандартная --}}
+    <link rel="icon" href="/assets/favicons/{{ $favicon_style ?? 'admin' }}/favicon.ico" sizes="any"
+        type="image/x-icon">
+    <link rel="icon" href="/assets/favicons/{{ $favicon_style ?? 'admin' }}/favicon.svg" sizes="any"
+        type="image/svg+xml">
+
+    {{-- ШРИФТЫ --}}
+    <link href="{{ mix('fonts/fonts.css') }}" rel="stylesheet">
+    @if (!isset($default_styles) || $default_styles == true)
+        {{-- Стили панели управления --}}
+        <link href="{{ mix('css/admin.css') }}" rel="stylesheet">
+    @endif
+
+</head>
+
+<body>
+    <div id="app">
+        @empty($header_hidden)
+            @include('admin._atoms.header')
+        @endempty
+        <div class="app-content">
+            @yield('content')
+        </div>
+    </div>
+
+    @stack('post-scripts')
+    {{-- Базовая загрузка приложения --}}
+    <script src="{{ mix('js/admin_app.js') }}" defer></script>
+</body>
+
+</html>
